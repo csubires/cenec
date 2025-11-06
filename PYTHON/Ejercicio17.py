@@ -13,5 +13,3 @@ while x <= n:
 
 print("Cantidad de pares ", pares)
 print("Cantidad de impares", impares)
-
-

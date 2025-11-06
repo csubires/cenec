@@ -10,6 +10,3 @@ def comprar():
     iva(float(input('¿Cual es el importe?: ')))
 
 comprar()
-
-
-

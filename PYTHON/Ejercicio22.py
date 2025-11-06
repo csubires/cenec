@@ -36,5 +36,3 @@ for x in lista3:
         cantidad += 1
 if cantidad > 1:
     print('El mayor se repite en la lista')
-
-
